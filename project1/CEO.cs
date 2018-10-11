@@ -4,7 +4,7 @@ using System.Text;
 
 namespace project1
 {
-    public class CEO : Employee
+    public class CEO : Rolepropeties
     {
         public int CEOyears { get; set; }
     }

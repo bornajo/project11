@@ -4,7 +4,7 @@ using System.Text;
 
 namespace project1
 {
-    public class DSNR : Employee
+    public class DSNR : Rolepropeties
     {
         bool CanDraw { get; set; }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace project1
 {
-    public class ST : Employee
+    public class ST : Rolepropeties
     {
         bool UsesAutomatedTests { get; set; }
     }

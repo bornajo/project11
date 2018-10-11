@@ -4,12 +4,14 @@ using System.Text;
 
 namespace project1
 {
-    public class Storage
+    public class Storage<T> where T: Rolepropeties
     {
+        
 
-        public void Add()
+        public void Add(T item)
         {
-
+         
+            
         }
 
         public void Help()
