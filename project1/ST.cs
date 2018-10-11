@@ -4,8 +4,8 @@ using System.Text;
 
 namespace project1
 {
-    class ST : Employee
+    public class ST : Employee
     {
-        bool UsesAutomatedTests;
+        bool UsesAutomatedTests { get; set; }
     }
 }

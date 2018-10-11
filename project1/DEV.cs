@@ -4,8 +4,8 @@ using System.Text;
 
 namespace project1
 {
-    class DEV : Employee
+    public class DEV : Employee
     {
-        bool IsStudent;
+        bool IsStudent { get; set; }
     }
 }

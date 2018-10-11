@@ -4,8 +4,8 @@ using System.Text;
 
 namespace project1
 {
-    class PM : Employee
+    public class PM : Employee
     {
-        string Project;
+        string Project { get; set; }
     }
 }

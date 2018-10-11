@@ -4,10 +4,10 @@ using System.Text;
 
 namespace project1
 {
-    public class Employee
+    abstract class Employee
     {
-        public string FirstName;
-        public string LastName;
-        public int Age;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
     }
 }

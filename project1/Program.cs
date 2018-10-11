@@ -18,21 +18,10 @@ namespace project1
             //String Age = Console.ReadLine();
             //Console.ReadLine();
 
-            var martina = new Person();
-
-            martina.FirstName = Console.ReadLine();
-
-            string test = martina.FirstName;
 
         }
 
     }
-
-    public class Person
-    {
-        public string  FirstName { get; set; }
-    }
-}
 
 
 
