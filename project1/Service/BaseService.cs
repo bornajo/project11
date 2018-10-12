@@ -4,9 +4,9 @@ using System.Text;
 
 namespace project1
 {
-    public abstract class BaseService<T> where T : Rolepropeties, new()
+    public abstract class BaseService<T> where T : RolePropeties, new()
     {
-        protected Storage storage = new Storage();
+        protected Storage Storage = new Storage();
         public void Add()
         {
             T model = new T();
@@ -21,6 +21,7 @@ namespace project1
             Console.ReadLine();
 
             AddSpecific(model);
+            Storage.Add(model);
         }
         public abstract void AddSpecific(T item);
         public abstract void Display();

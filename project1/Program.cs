@@ -10,11 +10,11 @@ namespace project1
             Console.Write("Command: ");
         }
 
-        public STRole stRole = new STRole();
-        public DEVRole devRole = new DEVRole();
-        public CEORole ceoRole = new CEORole();
-        public DSNRole dsnRole = new DSNRole();
-        public PMRole pmRole = new PMRole();
+        public StRole stRole = new StRole();
+        public DevRole devRole = new DevRole();
+        public CeoRole ceoRole = new CeoRole();
+        public DsnrRole dsnRole = new DsnrRole();
+        public PmRole pmRole = new PmRole();
 
 
 

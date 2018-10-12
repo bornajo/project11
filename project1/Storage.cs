@@ -4,18 +4,19 @@ using System.Text;
 
 namespace project1
 {
-    public class Storage : Rolepropeties
+    public class Storage : RolePropeties
     {
-        public List<RoleProperties> MyList { get; set; }
+        public List<RolePropeties> MyList { get; private set; }
 
-        public void Help()
-        {
+       //public void Help()
+       // {
 
-            Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
+        //    Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
 
-        }
-
-        public void Add(Rolepropeties)
+        //}
+        
+    
+        public void Add(RolePropeties item)
         {
 
 
@@ -27,11 +28,6 @@ namespace project1
         }
 
         public void Display()
-        {
-
-        }
-
-        public void List()
         {
 
         }

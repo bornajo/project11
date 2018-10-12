@@ -4,8 +4,8 @@ using System.Text;
 
 namespace project1
 {
-    public class PM : Rolepropeties
+    public class PmRole : RolePropeties
     {
-        string Project { get; set; }
+        public string Project { get; set; }
     }
 }
