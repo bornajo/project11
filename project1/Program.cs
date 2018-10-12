@@ -6,22 +6,18 @@ namespace project1
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
-            //Console.ReadLine();
-            //Console.Write("Role:");
-            //String Role = Console.ReadLine();
-            //Console.Write("FirstName:");
-            //String FirstName = Console.ReadLine();
-            //Console.Write("LastName:");
-            //String LastName = Console.ReadLine();
-            //Console.Write("Age:");
-            //String Age = Console.ReadLine();
-            //Console.ReadLine();
-            
-
-                
-
+            Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
+            Console.Write("Command: ");
         }
+
+        public STRole stRole = new STRole();
+        public DEVRole devRole = new DEVRole();
+        public CEORole ceoRole = new CEORole();
+        public DSNRole dsnRole = new DSNRole();
+        public PMRole pmRole = new PMRole();
+
+
+
 
     }
 }
