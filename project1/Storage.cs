@@ -4,33 +4,56 @@ using System.Text;
 
 namespace project1
 {
-    public class Storage : RolePropeties
+    public class Storage
     {
-        public List<RolePropeties> MyList { get; private set; }
-
-       //public void Help()
-       // {
+        protected static Storage instance;
+        private Storage() { }
+        public static Storage Instance
+        {
+            get
+            { 
+                if (instance == null)
+                {
+                instance = new Storage();
+                }
+            return instance;
+            }
+        }
+        public List<RoleProperties> MyList = new List<RoleProperties>();
+        //public void Help()
+        // {
 
         //    Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
 
         //}
-        
-    
-        public void Add(RolePropeties item)
+
+        public void Help()
         {
-
-
+            Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
         }
 
-        public void Remove()
-        {
 
+
+        public void Add(RoleProperties item)
+        {
+            MyList.Add(item);
+        }
+
+        public void Remove(RoleProperties item)
+        {
+            MyList.Remove(item);
         }
 
         public void Display()
         {
+           
 
         }
+        public void List()
+        {
+
+        }
+
 
 
     }

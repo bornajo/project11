@@ -1,19 +1,18 @@
-﻿using project1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Project1
+namespace project1
 {
    public class CeoService : BaseService<CeoRole>
    {
        public override void AddSpecific(CeoRole item)
        {
-          // CeoRole model = new CeoRole();
+            // CeoRole model = new CeoRole();
+           item.Role = "ceo";
            Console.Write("CEOYears: ");
-           item.CeoYears = Console.ReadLine();
+           item.CeoYears = Convert.ToInt32(Console.ReadLine());
        }
-
        public override void Display()
        {
 

@@ -4,9 +4,9 @@ using System.Text;
 
 namespace project1
 {
-    public abstract class BaseService<T> where T : RolePropeties, new()
+    public abstract class BaseService<T> where T : RoleProperties, new()
     {
-        protected Storage Storage = new Storage();
+        protected Storage Storage;
         public void Add()
         {
             T model = new T();
@@ -18,10 +18,10 @@ namespace project1
             model.LastName = Console.ReadLine();
             Console.Write("Age:");
             model.Age = Console.ReadLine();
-            Console.ReadLine();
 
             AddSpecific(model);
-            Storage.Add(model);
+            Storage.Instance.Add(model);
+            
         }
         public abstract void AddSpecific(T item);
         public abstract void Display();

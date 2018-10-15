@@ -4,9 +4,9 @@ using System.Text;
 
 namespace project1
 {
-    public class CeoRole : RolePropeties
+    public class CeoRole : RoleProperties
     {
-        public string CeoYears { get; set; }
+        public int CeoYears { get; set; }
        
     }
 }

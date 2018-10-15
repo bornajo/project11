@@ -1,9 +1,8 @@
-﻿using project1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Project1
+namespace project1
 {
     public class DevService : BaseService<DevRole>
     {

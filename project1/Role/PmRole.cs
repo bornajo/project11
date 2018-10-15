@@ -4,7 +4,7 @@ using System.Text;
 
 namespace project1
 {
-    public class PmRole : RolePropeties
+    public class PmRole : RoleProperties
     {
         public string Project { get; set; }
     }

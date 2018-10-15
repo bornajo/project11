@@ -1,15 +1,14 @@
-﻿using project1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Project1
+namespace project1
 {
     public class PmService : BaseService<PmRole>
     {
         public override void AddSpecific(PmRole item)
         {
-            // PmRole model = new PmRole();
+            item.Role = "pmrole";
             Console.Write("Projects: ");
             item.Project = Console.ReadLine();
         }
