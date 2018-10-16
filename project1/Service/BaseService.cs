@@ -16,8 +16,7 @@ namespace project1
             model.FirstName = Console.ReadLine();
             Console.Write("LastName:");
             model.LastName = Console.ReadLine();
-            Console.Write("Age:");
-            model.Age = Console.ReadLine();
+            model.Age = Helper.ParseUserInput("Age:");
 
             AddSpecific(model);
             Storage.Instance.Add(model);

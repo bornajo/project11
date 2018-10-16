@@ -10,9 +10,7 @@ namespace project1
         {
             item.Role = "dsnrole";
             Console.Write("Project: ");
-            item.Project = Console.ReadLine();
-            Console.Write("CanDraw: ");
-            item.CanDraw = Convert.ToBoolean(Console.ReadLine());
+            item.CanDraw = Helper.ParseBoolInput("CanDraw");
         }
 
         public override void Display()

@@ -8,11 +8,10 @@ namespace project1
     {
         public override void AddSpecific(DevRole item)
         {
-            // DevRole model = new DevRole();
-            Console.Write("Projects: ");
+            item.Role = "dev";
+            Console.Write("Project: ");
             item.Project = Console.ReadLine();
-            Console.Write("IsStudent: ");
-            item.IsStudent = Console.ReadLine();
+            item.IsStudent = Helper.ParseBoolInput("IsStudent: ");
         }
 
         public override void Display()
@@ -21,3 +20,5 @@ namespace project1
         }
     }
 }
+
+

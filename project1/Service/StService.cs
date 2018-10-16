@@ -9,10 +9,11 @@ namespace project1
         public override void AddSpecific(StRole item)
         {
             //  StrRole model = new StrRole();
-            Console.Write("PROJECT: ");
+            item.Role = "st";
+            Console.Write("Project: "); ;
             item.Project = Console.ReadLine();
             Console.Write("AutomatedTests: ");
-            item.AutomatedTests = Console.ReadLine();
+            item.AutomatedTests = Helper.ParseBoolInput("UsesAutomatedTest:");
         }
 
         public override void Display()

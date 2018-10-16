@@ -7,6 +7,6 @@ namespace project1
     public class DevRole : RoleProperties
     {
         public string Project { get; set; }
-        public string IsStudent { get; set; }
+        public bool IsStudent { get; set; }
     }
 }

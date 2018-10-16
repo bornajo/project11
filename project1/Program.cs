@@ -24,7 +24,7 @@ namespace project1
                 {
                     Console.Write("Role: ");
                     var role = Console.ReadLine();
-                    var ndceo = Storage.Instance.MyList.Where(roles => roles.Role == "ceo").FirstOrDefault();
+                    //var ndceo = Storage.Instance.MyList.Where(roles => roles.Role == "ceo").FirstOrDefault();
                     switch (role.ToLower())
                     {
                         case "ceo":
@@ -59,29 +59,13 @@ namespace project1
                 }
                 else if (command.ToLower() == "display")
                 {
-                    foreach (RoleProperties displaylist in Storage.Instance.MyList)
-                    {
-                        Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", displaylist.Role,
-                            displaylist.FirstName, displaylist.LastName, displaylist.Age);
-                    }
                 }
                 else if (command.ToLower() == "remove")
                 {
-                    Console.Write("Enter last name of employee you want to remove from list: ");
-                    var removelastname = Console.ReadLine();
-
-                    var remlastname = Storage.Instance.MyList.Where(roles => roles.LastName == removelastname).FirstOrDefault();
-                    Storage.Instance.MyList.Remove(remlastname);
-
+                    
                 }
             }
         }
-
-        //public STRole stRole = new STRole();
-        //public DEVRole devRole = new DEVRole();
-        //public CEORole ceoRole = new CEORole();
-        //public DSNRole dsnRole = new DSNRole();
-        //public PMRole pmRole = new PMRole();
 
     }
 

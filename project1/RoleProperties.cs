@@ -9,6 +9,6 @@ namespace project1
         public string Role { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Age { get; set; }
+        public uint Age { get; set; }
     }
 }

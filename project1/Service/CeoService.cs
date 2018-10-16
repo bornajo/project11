@@ -8,10 +8,8 @@ namespace project1
    {
        public override void AddSpecific(CeoRole item)
        {
-            // CeoRole model = new CeoRole();
            item.Role = "ceo";
-           Console.Write("CEOYears: ");
-           item.CeoYears = Convert.ToInt32(Console.ReadLine());
+            item.CeoYears = Helper.ParseUserInput("CeoYears: ");
        }
        public override void Display()
        {
