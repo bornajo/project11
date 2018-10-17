@@ -16,19 +16,22 @@ namespace project1
             Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
             while (true)
             {
-
+                string role;
                 Console.Write("Command: ");
                 var command = Console.ReadLine();
 
                 if (command.ToLower() == "add")
                 {
-                    Console.Write("Role: ");
-                    var role = Console.ReadLine();
-                    //var ndceo = Storage.Instance.MyList.Where(roles => roles.Role == "ceo").FirstOrDefault();
+                    do
+                    {
+                        Console.Write("Role: ");
+                        role = Console.ReadLine();
+                    }
+                    while (role.ToLower() != "ceo" && role.ToLower() != "pm" && role.ToLower() != "dev" && role.ToLower() != "dsn" && role.ToLower() != "st");
                     switch (role.ToLower())
                     {
                         case "ceo":
-                            if (ndceo == null)
+                            if (Storage.Instance.CheckIfCeoExist()==false)
                             {
                                 ceoService.Add();
                             }
@@ -59,12 +62,18 @@ namespace project1
                 }
                 else if (command.ToLower() == "display")
                 {
+                    Storage.Instance.Display();
                 }
                 else if (command.ToLower() == "remove")
                 {
                     
                 }
-            }
+                else if(command.ToLower() == "exit")
+                {
+                    return;
+                }
+
+            }             
         }
 
     }
