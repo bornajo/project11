@@ -24,36 +24,39 @@ namespace project1
 
         private List<RoleProperties> MyList = new List<RoleProperties>();
 
-        public void Help()
+        public void Remove(String removeLastName)
         {
-            Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
+            MyList.Remove(MyList.Where(roles => roles.LastName == removeLastName).FirstOrDefault());
         }
-
-
 
         public void Add(RoleProperties item)
         {
             MyList.Add(item);
         }
 
-        public void Remove(RoleProperties item)
-        {
-            MyList.Remove(item);
-        }
-
-        public void Display()
-        {
-            foreach (RoleProperties role in Storage.Instance.MyList)
-            {
-                Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", role.Role,
-                    role.FirstName, role.LastName, role.Age);
-            }
 
 
         }
         public void List()
         {
-            foreach (RoleProperties role in MyList.FindAll(item => item.Role != "ceo")) ;
+            foreach (RoleProperties listItem in MyList.Where(item => item.Role != "ceo"))
+            {
+                Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", listItem.Role,
+                   listItem.FirstName, listItem.LastName, listItem.Age);
+            }
+        }
+
+        public void RoleNameList()
+        {
+            Console.Write("Enter role name of employees you want to display: ");
+            string roleName = Console.ReadLine();
+
+            foreach (RoleProperties roleNameListItem in MyList.Where(item => item.Role == roleName))
+            {
+                Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", roleNameListItem.Role,
+                    roleNameListItem.FirstName, roleNameListItem.LastName, roleNameListItem.Age);
+            }
+
         }
         public bool CheckIfCeoExist()
         {
@@ -68,18 +71,6 @@ namespace project1
                 ceoExistance = true;
             }
             return ceoExistance;
-        }
-        public void RoleNameList()
-        {
-            Console.Write("Enter role name of employees you want to display: ");
-            string roleName = Console.ReadLine();
-
-            foreach (RoleProperties roleNameListItem in MyList.Where(item => item.Role == roleName))
-            {
-                Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", roleNameListItem.Role,
-                    roleNameListItem.FirstName, roleNameListItem.LastName, roleNameListItem.Age);
-            }
-
         }
     }
 }

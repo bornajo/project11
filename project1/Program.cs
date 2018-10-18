@@ -12,6 +12,7 @@ namespace project1
             PmService pmService = new PmService();
             DsnrService dsnService = new DsnrService();
             DevService devService = new DevService();
+            CommonService commonService = new CommonService();
 
             Console.WriteLine("Available commands: Add, Remove, Display, List, <role_name>List");
             while (true)
@@ -31,7 +32,7 @@ namespace project1
                     switch (role.ToLower())
                     {
                         case "ceo":
-                            if (Storage.Instance.CheckIfCeoExist()==false)
+                            if (ceoService.SearchCeo()==false)
                             {
                                 ceoService.Add();
                             }
@@ -62,11 +63,17 @@ namespace project1
                 }
                 else if (command.ToLower() == "display")
                 {
-                    Storage.Instance.Display();
+                    foreach (RoleProperties displayItem in MyList)
+                    {
+                        Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", displayItem.Role,
+                            displayItem.FirstName, displayItem.LastName, displayItem.Age);
+                    }
                 }
                 else if (command.ToLower() == "remove")
                 {
-                    
+                    Console.Write("Enter last name of employee you want to remove from list: ");
+                    string removeLastname = Console.ReadLine();
+                    commonService.Remove(removeLastname);
                 }
                 else if(command.ToLower() == "exit")
                 {

@@ -15,5 +15,11 @@ namespace project1
        {
 
        }
-   }
+        public bool SearchCeo()
+        {
+            bool searchCeo = Storage.Instance.CheckIfCeoExist();
+            return searchCeo;
+        }
+      
+    }
 }
