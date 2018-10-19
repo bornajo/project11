@@ -4,19 +4,35 @@ using System.Text;
 
 namespace project1
 {
-    public class CommonService 
+    public class CommonService : BaseService<RoleProperties>
     {
-        public void FindAll()
+        public CommonService() : base(string.Empty)
         {
-
         }
-        public void Get()
-        {
 
-        }
-        public void Remove (string removeLastName)
+        // The 'new' keyword hides the FindAll() method of BaseService
+        public new IEnumerable<RoleProperties> FindAll()
         {
-            Storage.Instance.Remove(removeLastName);
+            return base.FindAll();
+        }
+
+        public IEnumerable<RoleProperties> Find(string roleName)
+        {
+            return GetStorageInstance().Find(roleName);
+        }
+
+        protected override RoleProperties AddSpecific(RoleProperties model)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void DisplayList(IEnumerable<RoleProperties> list)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected override void DisplaySingle(RoleProperties model)
+        {
+            throw new NotImplementedException();
         }
     }
-}

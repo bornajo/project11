@@ -6,16 +6,34 @@ namespace project1
 {
     public class PmService : BaseService<PmRole>
     {
-        public override void AddSpecific(PmRole item)
+        public PmService() : base(Common.Roles.ProjectManager)
         {
-            item.Role = "pmrole";
-            Console.Write("Projects: ");
-            item.Project = Console.ReadLine();
         }
 
-        public override void Display()
+        protected override ProjectManagerRole AddSpecific(ProjectManagerRole model)
         {
+            bool valid;
+            do
+            {
+                Console.WriteLine("What project is he/she working on?");
+                valid = Console.ReadLine().IsValidString(out var project);
+                model.Project = project;
+            } while (!valid);
 
+            return model;
+        }
+
+        protected override void DisplayList(IEnumerable<ProjectManagerRole> list)
+        {
+            foreach (var item in list)
+            {
+                DisplaySingle(item);
+            }
+        }
+
+        protected override void DisplaySingle(PmRole model)
+        {
+            Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project");
         }
     }
 }

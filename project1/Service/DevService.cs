@@ -6,6 +6,10 @@ namespace project1
 {
     public class DevService : BaseService<DevRole>
     {
+        public DevService(string role) : base(role)
+        {
+        }
+
         public override void AddSpecific(DevRole item)
         {
             item.Role = "dev";

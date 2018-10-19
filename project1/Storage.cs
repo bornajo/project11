@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace project1
 {
@@ -28,49 +29,28 @@ namespace project1
         {
             MyList.Remove(MyList.Where(roles => roles.LastName == removeLastName).FirstOrDefault());
         }
+        public List<RoleProperties> GetList(string Role)
+        {
+            List<RoleProperties> result = MyList.FindAll(item => item.Role == Role);
+            return result;
+        }
 
         public void Add(RoleProperties item)
         {
             MyList.Add(item);
         }
 
-
-
-        }
-        public void List()
+        public IEnumerable<RoleProperties> FindAll()
         {
-            foreach (RoleProperties listItem in MyList.Where(item => item.Role != "ceo"))
-            {
-                Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", listItem.Role,
-                   listItem.FirstName, listItem.LastName, listItem.Age);
-            }
+            return MyList.ToList();
         }
-
-        public void RoleNameList()
+        public IEnumerable<RoleProperties> Find()
         {
-            Console.Write("Enter role name of employees you want to display: ");
-            string roleName = Console.ReadLine();
-
-            foreach (RoleProperties roleNameListItem in MyList.Where(item => item.Role == roleName))
-            {
-                Console.WriteLine("Role: {0}, First name: {1}, Last name: {2}, Age: {3}", roleNameListItem.Role,
-                    roleNameListItem.FirstName, roleNameListItem.LastName, roleNameListItem.Age);
-            }
-
+            return MyList.ToList();
         }
-        public bool CheckIfCeoExist()
-        {
-            bool ceoExistance;
-            var ceoExistanceCheck = MyList.Where(roles => roles.Role == "ceo").FirstOrDefault();
-            if (ceoExistanceCheck == null)
-            {
-                ceoExistance = false;
-            }
-            else
-            {
-                ceoExistance = true;
-            }
-            return ceoExistance;
-        }
+
     }
 }
+    
+
+    

@@ -6,16 +6,22 @@ namespace project1
 {
     public class DsnrService : BaseService<DsnrRole>
     {
-        public override void AddSpecific(DsnrRole item)
-        {
-            item.Role = "dsnrole";
-            Console.Write("Project: ");
-            item.CanDraw = Helper.ParseBoolInput("CanDraw");
-        }
 
-        public override void Display()
+        public DsnrService(string role) : base(role);
         {
-
         }
+    public override void AddSpecific(DsnrRole item)
+    {
+
+        item.Role = "dsnrole";
+        Console.Write("Project: ");
+        item.CanDraw = Helper.ParseBoolInput("CanDraw");
     }
+
+    public override void Display()
+    {
+
+    }
+}
+}
 }
