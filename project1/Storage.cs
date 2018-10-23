@@ -6,51 +6,54 @@ using System.Threading.Tasks;
 
 namespace project1
 {
-    public class Storage
+    public class EmployeeStorage
     {
-        protected static Storage instance;
-        private Storage() { }
-        public static Storage Instance
+        private static EmployeeStorage instance;
+
+        private List<RoleProperties> Storage { get; set; }
+
+        private EmployeeStorage()
         {
-            get
+            Storage = new List<RoleProperties>();
+        }
+
+        public static EmployeeStorage Instance => instance ?? (instance = new EmployeeStorage());
+
+        public RoleProperties Add(RoleProperties role)
+        {
+            Storage.Add(role);
+
+            return role;
+        }
+
+        public IEnumerable<RoleProperties> Find(string roleName)
+        {
+            if (!string.IsNullOrEmpty(roleName))
             {
-                if (instance == null)
-                {
-                    instance = new Storage();
-                }
-                return instance;
+                return Storage.Where(e => e.Role == roleName).ToList();
             }
-        }
 
-
-        private List<RoleProperties> MyList = new List<RoleProperties>();
-
-        public void Remove(String removeLastName)
-        {
-            MyList.Remove(MyList.Where(roles => roles.LastName == removeLastName).FirstOrDefault());
-        }
-        public List<RoleProperties> GetList(string Role)
-        {
-            List<RoleProperties> result = MyList.FindAll(item => item.Role == Role);
-            return result;
-        }
-
-        public void Add(RoleProperties item)
-        {
-            MyList.Add(item);
+            return Storage.Where(e => e.Role != Common.Roles.Ceo).ToList();
         }
 
         public IEnumerable<RoleProperties> FindAll()
         {
-            return MyList.ToList();
-        }
-        public IEnumerable<RoleProperties> Find()
-        {
-            return MyList.ToList();
+            return Storage.ToList();
         }
 
+        public RoleProperties Get(int id, string roleName)
+        {
+            if (string.IsNullOrEmpty(roleName))
+            {
+                return Storage.FirstOrDefault(e => e.Id == id);
+            }
+
+            return Storage.FirstOrDefault(e => e.Id == id && e.Role == roleName);
+        }
+
+        public bool Remove(RoleProperties item)
+        {
+            return item != null && Storage.Remove(item);
+        }
     }
 }
-    
-
-    

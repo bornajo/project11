@@ -6,22 +6,41 @@ namespace project1
 {
     public class DsnrService : BaseService<DsnrRole>
     {
-
-        public DsnrService(string role) : base(role);
+        public DsnrService() : base(Common.Roles.Designer)
         {
         }
-    public override void AddSpecific(DsnrRole item)
-    {
 
-        item.Role = "dsnrole";
-        Console.Write("Project: ");
-        item.CanDraw = Helper.ParseBoolInput("CanDraw");
+        protected override DsnrRole AddSpecific(DsnrRole model)
+        {
+            bool valid;
+            do
+            {
+                Console.WriteLine("What project is he/she working on?");
+                valid = Console.ReadLine().IsValidString(out var project);
+                model.Project = project;
+            } while (!valid);
+
+            do
+            {
+                Console.WriteLine("Is he/she a student?");
+                valid = Console.ReadLine().IsValidBool(out var canDraw);
+                model.CanDraw = canDraw;
+            } while (!valid);
+
+            return model;
+        }
+
+        protected override void DisplayList(IEnumerable<DsnrRole> list)
+        {
+            foreach (var item in list)
+            {
+                DisplaySingle(item);
+            }
+        }
+
+        protected override void DisplaySingle(DsnrRole item)
+        {
+            Console.WriteLine($"{item.Id}: {item.LastName} {item.FirstName}, {item.Age}, works on {item.Project} project {(item.CanDraw ? "can" : "cannot")} draw");
+        }
     }
-
-    public override void Display()
-    {
-
-    }
-}
-}
 }

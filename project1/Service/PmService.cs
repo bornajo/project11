@@ -10,7 +10,7 @@ namespace project1
         {
         }
 
-        protected override ProjectManagerRole AddSpecific(ProjectManagerRole model)
+        protected override PmRole AddSpecific(PmRole model)
         {
             bool valid;
             do
@@ -23,7 +23,7 @@ namespace project1
             return model;
         }
 
-        protected override void DisplayList(IEnumerable<ProjectManagerRole> list)
+        protected override void DisplayList(IEnumerable<PmRole> list)
         {
             foreach (var item in list)
             {

@@ -5,82 +5,72 @@ namespace project1
 {
     class Program
     {
-        private static string role;
-
         static void Main(string[] args)
         {
-            CeoService ceoService = new CeoService("ceo");
-            StService stService = new StService("st");
-            PmService pmService = new PmService("pm");
-            DsnrService dsnService = new DsnrService("dns");
-            DevService devService = new DevService("dev");
-            CommonService commonService = new CommonService();
+            var service = new EmployeeService();
+
+            HandleHelp();
+
             var valid = false;
             string command;
             do
             {
-                Console.WriteLine("Command: ");
+                Console.Write("Command: ");
                 command = Console.ReadLine();
                 valid = CommandValidator.IsValidCommand(command);
                 command = command.ToUpper();
-                while (true)
+                switch (command)
                 {
-                    Console.Write("Command: ");
-                    if (Console.ReadLine().ToLower() == "add")
-                    {
-                        do
-                        {
-                            Console.Write("Role: ");
-                            role = Console.ReadLine();
-                        }
-                        while (role.ToLower() != "ceo" && role.ToLower() != "pm" && role.ToLower() != "dev" && role.ToLower() != "dsn" && role.ToLower() != "st");
-                        switch (role.ToLower())
-                        {
-                            case "ceo":
-                                if (ceoService.SearchCeo() == false)
-                                {
-                                    ceoService.Add();
-                                }
-                                else
-                                {
-                                    Console.WriteLine("There is already one CEO.");
-                                }
-                                break;
-                            case "pm":
-                                pmService.Add();
-                                break;
-                            case "st":
-                                stService.Add();
-                                break;
-                            case "dsn":
-                                dsnService.Add();
-                                break;
-                            case "dev":
-                                devService.Add();
-                                break;
-
-                        }
-
-                        Console.WriteLine("Possible commands are:");
-                        Console.WriteLine("-- Add");
-                        Console.WriteLine("---- will route you to add a new employee");
-                        Console.WriteLine("-- Remove");
-                        Console.WriteLine("---- will route you to remove existing employee");
-                        Console.WriteLine("-- Display");
-                        Console.WriteLine("---- will display all employees including you");
-                        Console.WriteLine("-- List");
-                        Console.WriteLine("---- will display all employees excluding you");
-                        Console.WriteLine("-- <role>List");
-                        Console.WriteLine("---- will display role specific employees. Example: CeoList, PmList");
-
-                    }
+                    case Commands.Add:
+                        service.HandleAdd();
+                        break;
+                    case Commands.Remove:
+                        service.HandleRemove();
+                        break;
+                    case Commands.Display:
+                        service.HandleDisplay();
+                        break;
+                    case Commands.List:
+                        service.HandleList(null);
+                        break;
+                    case Commands.CeoList:
+                    case Commands.PmList:
+                    case Commands.DevList:
+                    case Commands.DsnrList:
+                    case Commands.StList:
+                        var role = command.Replace("LIST", "");
+                        service.HandleList(role);
+                        break;
+                    case Commands.Help:
+                        HandleHelp();
+                        break;
+                    case Commands.Exit:
+                        Console.WriteLine("Bye bye");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid command!");
+                        HandleHelp();
+                        break;
                 }
-            }
+            } while (command != Commands.Exit);
+        }
+
+        static void HandleHelp()
+        {
+            Console.WriteLine("Possible commands are:");
+            Console.WriteLine("-- Add");
+            Console.WriteLine("---- will route you to add a new employee");
+            Console.WriteLine("-- Remove");
+            Console.WriteLine("---- will route you to remove existing employee");
+            Console.WriteLine("-- Display");
+            Console.WriteLine("---- will display all employees including you");
+            Console.WriteLine("-- List");
+            Console.WriteLine("---- will display all employees excluding you");
+            Console.WriteLine("-- <role>List");
+            Console.WriteLine("---- will display role specific employees. Example: CeoList, PmList");
         }
     }
 }
-
-
 
 
 

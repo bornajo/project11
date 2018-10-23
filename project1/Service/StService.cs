@@ -6,19 +6,41 @@ namespace project1
 {
     public class StService : BaseService<StRole>
     {
-        public override void AddSpecific(StRole item)
+        public StService() : base(Common.Roles.SoftwareTester)
         {
-            //  StrRole model = new StrRole();
-            item.Role = "st";
-            Console.Write("Project: "); ;
-            item.Project = Console.ReadLine();
-            Console.Write("AutomatedTests: ");
-            item.AutomatedTests = Helper.ParseBoolInput("UsesAutomatedTest:");
         }
 
-        public override void Display()
+        protected override StRole AddSpecific(StRole model)
         {
+            bool valid;
+            do
+            {
+                Console.WriteLine("What project is he/she working on?");
+                valid = Console.ReadLine().IsValidString(out var project);
+                model.Project = project;
+            } while (!valid);
 
+            do
+            {
+                Console.WriteLine("Is he/she using automated tests?");
+                valid = Console.ReadLine().IsValidBool(out var usesAutomatedTests);
+                model.UsesAutomatedTests = usesAutomatedTests;
+            } while (!valid);
+
+            return model;
+        }
+
+        protected override void DisplayList(IEnumerable<StRole> list)
+        {
+            foreach (var item in list)
+            {
+                DisplaySingle(item);
+            }
+        }
+
+        protected override void DisplaySingle(StRole model)
+        {
+            Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project and {(model.UsesAutomatedTests ? "is" : "isn't")} using automated tests");
         }
     }
 }
