@@ -50,7 +50,7 @@ namespace project1
 
         protected override void DisplaySingle(CeoRole model)
         {
-            Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, {model.Age}, with {model.CeoYears} {(model.CeoYears <= 1 ? "year" : "years")} of experiance as CEO");
+            Console.WriteLine($"{model.Roles}: {model.LastName} {model.FirstName}, {model.Age}, with {model.CeoYears} {(model.CeoYears <= 1 ? "year" : "years")} of experiance as CEO");
         }
     }
 }

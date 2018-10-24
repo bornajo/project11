@@ -40,7 +40,7 @@ namespace project1
 
         protected override void DisplaySingle(DsnrRole item)
         {
-            Console.WriteLine($"{item.Id}: {item.LastName} {item.FirstName}, {item.Age}, works on {item.Project} project {(item.CanDraw ? "can" : "cannot")} draw");
+            Console.WriteLine($"{item.Roles}: {item.LastName} {item.FirstName}, {item.Age}, works on {item.Project} project {(item.CanDraw ? "can" : "cannot")} draw");
         }
     }
 }

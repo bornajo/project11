@@ -28,13 +28,12 @@ namespace project1
         {
 
             string role;
-            bool valid;
             do
             {
                 Console.WriteLine("Select a role: (ceo, pm, dev, dsnr, st)");
                 role = Console.ReadLine();
-                valid = RoleValidator.IsValidRole(role);
-            } while (!valid);
+     
+            } while (role != "ceo" && role != "pm" && role != "dev" && role != "dsnr" && role != "st" );
 
             switch (role.ToUpper())
             {
@@ -76,24 +75,24 @@ namespace project1
 
             } while (!valid);
 
-            var toRemove = list.ElementAt(selection - 1);
+           var toRemove = list.ElementAt(selection - 1);
 
-            switch (toRemove.Role)
+            switch (toRemove.Roles)
             {
                 case Common.Roles.Ceo:
-                    ceoService.Remove(toRemove.Id);
+                    ceoService.Remove(toRemove.Roles);
                     break;
                 case Common.Roles.ProjectManager:
-                    pmService.Remove(toRemove.Id);
+                    pmService.Remove(toRemove.Roles);
                     break;
                 case Common.Roles.Developer:
-                    devService.Remove(toRemove.Id);
+                    devService.Remove(toRemove.Roles);
                     break;
                 case Common.Roles.Designer:
-                    dsnrService.Remove(toRemove.Id);
+                    dsnrService.Remove(toRemove.Roles);
                     break;
                 case Common.Roles.SoftwareTester:
-                    stService.Remove(toRemove.Id);
+                    stService.Remove(toRemove.Roles);
                     break;
             }
         }
@@ -104,7 +103,7 @@ namespace project1
 
             for (int i = 0; i < employeeList.Length; i++)
             {
-                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} - {employeeList[i].Role}");
+                Console.WriteLine($"#{i + 1}. {employeeList[i].LastName} {employeeList[i].FirstName} - {employeeList[i].Roles}");
             }
 
             return employeeList;
@@ -129,6 +128,12 @@ namespace project1
                 case Common.Roles.SoftwareTester:
                     stService.Find();
                     break;
+                case null:
+                    pmService.Find();
+                    dsnrService.Find();
+                    devService.Find();
+                    stService.Find();
+                    break; 
             }
         }
     }

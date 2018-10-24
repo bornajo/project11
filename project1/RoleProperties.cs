@@ -6,8 +6,7 @@ namespace project1
 {
     public class RoleProperties
     {
-        public int Id { get; set; }
-        public string Role { get; set; }
+        public string Roles { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public uint Age { get; set; }

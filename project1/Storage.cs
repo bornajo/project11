@@ -30,10 +30,10 @@ namespace project1
         {
             if (!string.IsNullOrEmpty(roleName))
             {
-                return Storage.Where(e => e.Role == roleName).ToList();
+                return Storage.Where(e => e.Roles == roleName).ToList();
             }
 
-            return Storage.Where(e => e.Role != Common.Roles.Ceo).ToList();
+            return Storage.Where(e => e.Roles != Common.Roles.Ceo).ToList();
         }
 
         public IEnumerable<RoleProperties> FindAll()
@@ -41,14 +41,14 @@ namespace project1
             return Storage.ToList();
         }
 
-        public RoleProperties Get(int id, string roleName)
+        public RoleProperties Get(string Roles, string Role)
         {
-            if (string.IsNullOrEmpty(roleName))
+            if (string.IsNullOrEmpty(Role))
             {
-                return Storage.FirstOrDefault(e => e.Id == id);
+                return Storage.FirstOrDefault(e => e.Roles == Role);
             }
 
-            return Storage.FirstOrDefault(e => e.Id == id && e.Role == roleName);
+            return Storage.FirstOrDefault(e => e.Roles == Role);
         }
 
         public bool Remove(RoleProperties item)

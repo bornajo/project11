@@ -33,7 +33,7 @@ namespace project1
 
         protected override void DisplaySingle(PmRole model)
         {
-            Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project");
+            Console.WriteLine($"{model.Roles}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project");
         }
     }
 }

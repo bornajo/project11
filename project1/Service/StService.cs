@@ -40,7 +40,7 @@ namespace project1
 
         protected override void DisplaySingle(StRole model)
         {
-            Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project and {(model.UsesAutomatedTests ? "is" : "isn't")} using automated tests");
+            Console.WriteLine($"{model.Roles}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project and {(model.UsesAutomatedTests ? "is" : "isn't")} using automated tests");
         }
     }
 }

@@ -6,27 +6,28 @@ using System.Linq;
 
 namespace project1
 {
-    public abstract class BaseService<T> where T : RoleProperties
+    public abstract class BaseService<T> where T : RoleProperties, new()
     {
         private readonly string roleName;
         private readonly EmployeeStorage storage;
-        private readonly RoleFactory roleFactory;
+    
 
 
         protected BaseService(string roleName)
         {
             this.roleName = roleName;
             storage = EmployeeStorage.Instance;
-            roleFactory = new RoleFactory();
+
         }
 
         protected EmployeeStorage GetStorageInstance() => storage;
-
         public virtual T Add()
         {
-            var model = roleFactory.Create(roleName) as T; // cast is required because of AddSpecific(model) method
+            T model = new T();
 
-            model.Id = UniqueIdentifierGenerator.Instance.GetUniqueId();
+
+
+
 
             var valid = false;
             do
@@ -51,7 +52,7 @@ namespace project1
   
             } while (!valid);
 
-            model.Role = roleName;
+            model.Roles = roleName;
 
             model = AddSpecific(model);
 
@@ -75,9 +76,9 @@ namespace project1
             return storage.FindAll();
         }
 
-        public virtual T Get(int id)
+        public virtual T Get(string LastName)
         {
-            var result = storage.Get(id, roleName) as T;
+            var result = storage.Get(LastName, roleName) as T;
 
             if (result != null)
             {
@@ -87,30 +88,20 @@ namespace project1
             return result;
         }
 
-        public virtual bool Remove(int id)
+        public virtual bool Remove(string LastName)
         {
-            var existingEmployee = Get(id);
+            var existingEmployee = Get(LastName);
 
             return existingEmployee != null && storage.Remove(existingEmployee);
         }
 
-        /// <summary>
-        /// Implement role specific value binding
-        /// </summary>
-        /// <param name="model">Model with generic value binding.</param>
-        /// <returns>Role model with all data</returns>
+
         protected abstract T AddSpecific(T model);
 
-        /// <summary>
-        /// Implement to display role specific employee data
-        /// </summary>
-        /// <param name="list">List with role employees</param>
+     
         protected abstract void DisplayList(IEnumerable<T> list);
 
-        /// <summary>
-        /// Implement to display single role specific employee data
-        /// </summary>
-        /// <param name="model">Model with employee data</param>
+  
         protected abstract void DisplaySingle(T model);
 
     }

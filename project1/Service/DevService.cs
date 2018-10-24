@@ -23,8 +23,7 @@ namespace project1
             do
             {
                 Console.WriteLine("Is he/she a student?");
-                valid = Console.ReadLine().IsValidBool(out var isStudent);
-                model.IsStudent = isStudent;
+
             } while (!valid);
 
             return model;
@@ -40,7 +39,7 @@ namespace project1
 
         protected override void DisplaySingle(DevRole model)
         {
-            Console.WriteLine($"{model.Id}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project {(model.IsStudent ? "is" : "is not")} a student");
+            Console.WriteLine($"{model.Roles}: {model.LastName} {model.FirstName}, {model.Age}, works on {model.Project} project {(model.IsStudent ? "is" : "is not")} a student");
         }
     }
 }

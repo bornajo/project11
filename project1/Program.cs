@@ -11,13 +11,11 @@ namespace project1
 
             HandleHelp();
 
-            var valid = false;
             string command;
             do
             {
                 Console.Write("Command: ");
                 command = Console.ReadLine();
-                valid = CommandValidator.IsValidCommand(command);
                 command = command.ToUpper();
                 switch (command)
                 {
