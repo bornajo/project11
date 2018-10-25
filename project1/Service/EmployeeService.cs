@@ -32,8 +32,8 @@ namespace project1
             {
                 Console.WriteLine("Select a role: (ceo, pm, dev, dsnr, st)");
                 role = Console.ReadLine();
-     
-            } while (role != "ceo" && role != "pm" && role != "dev" && role != "dsnr" && role != "st" );
+
+            } while (role != "ceo" && role != "pm" && role != "dev" && role != "dsnr" && role != "st");
 
             switch (role.ToUpper())
             {
@@ -75,7 +75,7 @@ namespace project1
 
             } while (!valid);
 
-           var toRemove = list.ElementAt(selection - 1);
+            var toRemove = list.ElementAt(selection - 1);
 
             switch (toRemove.Roles)
             {
@@ -128,12 +128,16 @@ namespace project1
                 case Common.Roles.SoftwareTester:
                     stService.Find();
                     break;
+                case Common.Roles.PmAndDevList:
+                    devService.Find();
+                    pmService.Find();
+                    break;
                 case null:
                     pmService.Find();
                     dsnrService.Find();
                     devService.Find();
                     stService.Find();
-                    break; 
+                    break;
             }
         }
     }

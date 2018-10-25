@@ -4,7 +4,7 @@ using System.Text;
 
 namespace project1
 {
-    class Commands
+    public class Commands
     {
         public const string Help = "HELP";
         public const string Add = "ADD";
@@ -13,10 +13,12 @@ namespace project1
         public const string List = "LIST";
         public const string Exit = "EXIT";
 
+
         public const string CeoList = "CEOLIST";
         public const string PmList = "PMLIST";
         public const string DevList = "DEVLIST";
         public const string DsnrList = "DSNRLIST";
         public const string StList = "STLIST";
+        public const string PmAndDevList = "PMANDDEVLIST";
     }
 }
