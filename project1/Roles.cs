@@ -11,7 +11,7 @@ namespace project1.Common
         public const string Developer = "DEV";
         public const string Designer = "DSNR";
         public const string SoftwareTester = "ST";
-        public const string PmAndDevList = "PMANDDEVLIST";
+        public const string PmDev = "PMDEV";
 
 
     }

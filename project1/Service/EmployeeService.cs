@@ -128,12 +128,12 @@ namespace project1
                 case Common.Roles.SoftwareTester:
                     stService.Find();
                     break;
-                case Common.Roles.PmAndDevList:
+                case Common.Roles.PmDev:
                     devService.Find();
                     pmService.Find();
                     break;
                 case null:
-                    pmService.Find();
+                    pmService.Find(); 
                     dsnrService.Find();
                     devService.Find();
                     stService.Find();

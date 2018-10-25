@@ -36,7 +36,7 @@ namespace project1
                     case Commands.DevList:
                     case Commands.DsnrList:
                     case Commands.StList:
-                    case Commands.PmAndDevList:
+                    case Commands.PmDev:
                         var role = command.Replace("LIST", "");
                         service.HandleList(role);
                         break;
