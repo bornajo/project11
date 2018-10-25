@@ -111,8 +111,10 @@ namespace project1
 
         public void HandleList(string roleName)
         {
+
             switch (roleName)
             {
+
                 case Common.Roles.Ceo:
                     ceoService.Find();
                     break;
@@ -129,11 +131,15 @@ namespace project1
                     stService.Find();
                     break;
                 case Common.Roles.PmDev:
-                    devService.Find();
-                    pmService.Find();
+                    if (devService.Find().Count() == 0 && pmService.Find().Count() == 0)
+                      {
+                        Console.WriteLine("There is no dev and pm");
+                    }
+
+
                     break;
-                case null:
-                    pmService.Find(); 
+                default:
+                    pmService.Find();
                     dsnrService.Find();
                     devService.Find();
                     stService.Find();

@@ -19,6 +19,6 @@ namespace project1
         public const string DevList = "DEVLIST";
         public const string DsnrList = "DSNRLIST";
         public const string StList = "STLIST";
-        public const string PmDev = "PMDEV";
+        public const string PmDevList = "PMDEVLIST";
     }
 }

@@ -26,6 +26,7 @@ namespace project1
             return role;
         }
 
+
         public IEnumerable<RoleProperties> Find(string roleName)
         {
             if (!string.IsNullOrEmpty(roleName))
